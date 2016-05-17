@@ -56,10 +56,10 @@ function setGrid(){
         $(this).find(".focus").hide();
         $(this).find(".focus").css({left: posX + "px", top: posY + "px"});
         $(this).find(".focus").show("explode",{pieces: 4} ,100, function(){
-            $(this).delay(200).effect("pulsate",{times: 1}, 500, function(){
-                $(this).delay(300).hide("fade", 50);
-            });
         });
+        $(this).find(".focus").delay(200).effect("pulsate",{times: 1}, 500, function(){
+        });
+        $(this).find(".focus").delay(300).hide("fade", 50);
         // $(this).find(".focus").delay(1000).hide();
         // $(this).find(".focus").delay(400).show();
         // $(this).find(".focus").delay(1000).hide();
