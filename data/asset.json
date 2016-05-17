@@ -1,0 +1,248 @@
+{
+	"items": [
+	
+	{
+		"name": "",
+		"hashname": "20160221_134738_",
+		"orient": "vertical",
+		"assets": "asset/20160221_134738/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 1050,
+			"height": 779
+		},
+		"grid":{
+			"x": 8,
+			"y": 6
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160221_155834_",
+		"orient": "horizontal",
+		"assets": "asset/20160221_155834/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 779,
+			"height": 1050
+		},
+		"grid":{
+			"x": 6,
+			"y": 8
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160221_142148_",
+		"orient": "horizontal",
+		"assets": "asset/20160221_142148/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 1050,
+			"height": 779
+		},
+		"grid":{
+			"x": 8,
+			"y": 6
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160122_151247_",
+		"orient": "horizontal",
+		"assets": "asset/20160122_151247/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 1050,
+			"height": 779
+		},
+		"grid":{
+			"x": 8,
+			"y": 6
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160221_122050_",
+		"orient": "horizontal",
+		"assets": "asset/20160221_122050/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 1050,
+			"height": 779
+		},
+		"grid":{
+			"x": 8,
+			"y": 6
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160330_140744_",
+		"orient": "vertical",
+		"assets": "asset/20160330_140744/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 779,
+			"height": 1050
+		},
+		"grid":{
+			"x": 6,
+			"y": 8
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160221_161910_",
+		"orient": "horizontal",
+		"assets": "asset/20160221_161910/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 1050,
+			"height": 779
+		},
+		"grid":{
+			"x": 8,
+			"y": 6
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160221_160644_",
+		"orient": "vertical",
+		"assets": "asset/20160221_160644/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 779,
+			"height": 1050
+		},
+		"grid":{
+			"x": 6,
+			"y": 8
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	},
+	{
+		"name": "",
+		"hashname": "20160330_135521_",
+		"orient": "vertical",
+		"assets": "asset/20160330_135521/",
+		"interval":{
+			"x": 125,
+			"y": 125
+		},
+		"origin": {
+			"x": 62,
+			"y": 62
+		},
+		"res":{
+			"width": 779,
+			"height": 1050
+		},
+		"grid":{
+			"x": 6,
+			"y": 8
+		},
+		"aperture":{
+			"start": 3,
+			"scale": 7,
+			"interval": 2
+		}
+	}
+]
+}
