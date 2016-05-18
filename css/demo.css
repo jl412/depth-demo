@@ -360,13 +360,13 @@ body > .hori-layout{
 
 
 /* mobile ultilities */
-@media only screen and (max-device-width: 992px){
+@media only screen and (max-width: 992px){
 	#home,#thumbs,#view{
 		position: relative;
 	}
 
 	#home{
-		left: auto;
+		left: auto !important;
 	}
 
 	#thumbs{
@@ -386,7 +386,7 @@ body > .hori-layout{
 	}
 }
 
-@media only screen and (max-device-width: 736px){
+@media only screen and (max-width: 736px){
 	.image-info > div{
 		width: 30%;
 		max-width: 150px;
