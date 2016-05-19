@@ -36,7 +36,7 @@ function setGrid(){
             yPercent: nonOddY * 100, 
             yOdd: oddGridY * 100,
             url: data.items[i].assets + data.items[i].hashname + data.items[i].origin.x + '_' + data.items[i].origin.y + '_'
-        };
+            };
 
         content+= 
             '<div class="img-wrapper nodisplay"><img class="img-responsive current"src="'+ imageSets[i].url + currentAper + '.jpg"/><div class="grid-container">' + 
@@ -49,21 +49,28 @@ function setGrid(){
         showGrid.prepend(content);
     }
 
+
+    // clicking events
     $('.grid-container').on('click', function(event) {
+        $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
         var posX = event.pageX - $(this).offset().left - 30,
         posY = event.pageY - $(this).offset().top - 30;
         $(this).find(".focus").stop(true, true);
         $(this).find(".focus").hide();
         $(this).find(".focus").css({left: posX + "px", top: posY + "px"});
-        $(this).find(".focus").show("explode",{pieces: 4} ,100, function(){
+        $(this).find(".focus").show("explode",{pieces: 4} ,150, function(){
         });
         $(this).find(".focus").delay(200).effect("pulsate",{times: 1}, 500, function(){
         });
-        $(this).find(".focus").delay(300).hide("fade", 50);
+        
         // $(this).find(".focus").delay(1000).hide();
         // $(this).find(".focus").delay(400).show();
         // $(this).find(".focus").delay(1000).hide();
         console.log("X:" + posX + ", Y:" + posY);
+    });
+
+    $("#view").on("click",".grid-container .grid", function(){
+        changeFocus(imageSets[currentImage], $(this));
     });
 
     });
@@ -131,8 +138,9 @@ function changeFocus(imageset, grid){
 
 
     $("#view .img-wrapper:eq("+ currentImage +")").prepend('<img class="img-responsive onload"src="'+ url + currentAper + '.jpg' +'"/>');
+    $(".img-wrapper:eq("+ currentImage +") .grid-container").addClass("wait");
 
-    replaceImg();
+    replaceImg(true);
 }
 
 function changeAperture(imageset, aperture){
@@ -145,17 +153,22 @@ function changeAperture(imageset, aperture){
     $("#view .img-wrapper:eq("+ currentImage +")").prepend('<img class="img-responsive onload"src="'+ imageset.url + converted + '.jpg' +'"/>');
 
 
-    replaceImg();
+    replaceImg(false);
 }
 
 
-function replaceImg(){
-    var inserted =  $(".img-wrapper:eq("+ currentImage +") .onload")
+function replaceImg(focusAnimation){
+    var inserted =  $(".img-wrapper:eq("+ currentImage +") .onload");
     inserted.on("load", function(){
         $(".img-wrapper:eq("+ currentImage +") .current").not(inserted).hide("fade", 300 , function(){
             $(this).detach();
+            inserted.removeClass("onload").addClass("current");
+            if (focusAnimation == true) {
+                $(".img-wrapper:eq("+ currentImage +")").find(".focus").delay(300).hide("fade", 50, function(){
+                    $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
+                });
+            }
         });
-        inserted.removeClass("onload").addClass("current");
     });
 }
 
@@ -295,11 +308,6 @@ $(window).resize(function(){
 
 
 $(document).on('ready', function(){ 
-
-    $("#view").on("click",".grid-container .grid", function(){
-        console.log("clicked");
-        changeFocus(imageSets[currentImage], $(this));
-    });
 
 
     $( ".aperture" ).slider({
