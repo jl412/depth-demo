@@ -141,7 +141,7 @@ function changeFocus(imageset, grid){
 
 
     $("#view .img-wrapper:eq("+ currentImage +")").prepend('<img class="img-responsive onload"src="'+ url + currentAper + '.jpg' +'"/>');
-    $(".img-wrapper:eq("+ currentImage +") .grid-container").addClass("wait");
+    // $(".img-wrapper:eq("+ currentImage +") .grid-container").addClass("wait");
     $(".img-wrapper:eq("+ currentImage +") .grid-container").trigger('mousemove');
     replaceImg(true);
 }
@@ -168,7 +168,7 @@ function replaceImg(focusAnimation){
             inserted.removeClass("onload").addClass("current");
             if (focusAnimation == true) {
                 $(".img-wrapper:eq("+ currentImage +")").find(".focus").delay(300).hide("fade", 50, function(){
-                    $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
+                    // $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
                 });
             }   
         })

@@ -70,10 +70,10 @@ body > .hori-layout{
 }
 
 #aperture-tip{
-	width: 50%;
+	width: 30%;
 	position: absolute;
 	bottom: 55px;
-	left: 20%;
+	left: 30%;
 }
 
 #aperture-tip span{
