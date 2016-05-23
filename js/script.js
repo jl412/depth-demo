@@ -52,27 +52,30 @@ function setGrid(){
 
     // clicking events
     $('.grid-container').on('click', function(event) {
-        $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
-        var posX = event.pageX - $(this).offset().left - 30,
-        posY = event.pageY - $(this).offset().top - 30;
-        $(this).find(".focus").stop(true, true);
-        $(this).find(".focus").hide();
-        $(this).find(".focus").css({left: posX + "px", top: posY + "px"});
-        $(this).find(".focus").show("explode",{pieces: 4} ,150, function(){
-        });
-        $(this).find(".focus").delay(200).effect("pulsate",{times: 1}, 500, function(){
-        });
         
+        focusAnimation($(this), event);
         // $(this).find(".focus").delay(1000).hide();
         // $(this).find(".focus").delay(400).show();
         // $(this).find(".focus").delay(1000).hide();
-        console.log("X:" + posX + ", Y:" + posY);
+        // console.log("X:" + posX + ", Y:" + posY);
     });
 
     $("#view").on("click",".grid-container .grid", function(){
         changeFocus(imageSets[currentImage], $(this));
     });
 
+    });
+}
+
+function focusAnimation(canvas, event){
+    var posX = event.pageX - canvas.offset().left - 30,
+    posY = event.pageY - canvas.offset().top - 30;
+    canvas.find(".focus").stop(true, true);
+    canvas.find(".focus").hide();
+    canvas.find(".focus").css({left: posX + "px", top: posY + "px"});
+    canvas.find(".focus").show("explode",{pieces: 4} ,150, function(){
+    });
+    canvas.find(".focus").delay(200).effect("pulsate",{times: 1}, 500, function(){
     });
 }
 
@@ -139,7 +142,7 @@ function changeFocus(imageset, grid){
 
     $("#view .img-wrapper:eq("+ currentImage +")").prepend('<img class="img-responsive onload"src="'+ url + currentAper + '.jpg' +'"/>');
     $(".img-wrapper:eq("+ currentImage +") .grid-container").addClass("wait");
-
+    $(".img-wrapper:eq("+ currentImage +") .grid-container").trigger('mousemove');
     replaceImg(true);
 }
 
@@ -167,8 +170,8 @@ function replaceImg(focusAnimation){
                 $(".img-wrapper:eq("+ currentImage +")").find(".focus").delay(300).hide("fade", 50, function(){
                     $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
                 });
-            }
-        });
+            }   
+        })
     });
 }
 
@@ -193,6 +196,8 @@ function render(url){
     if (isMobile == false) {
         if (currentPage.length) {
             if (temp == "#home"){
+                $('.img-wrapper').hide();
+                $('.item').parent().removeClass("chosen");
                 $("#view").hide("slide", {direction: "left", queue:false}, 200, function(){
                     $("#thumbs").animate({left:"41.66666667%", width:"58.33333333%"}, 300, function(){
                        $("#thumbs").attr("style", "left:41.66666667%").removeClass("col-md-4").addClass("col-md-7");
@@ -218,6 +223,8 @@ function render(url){
         console.log("isMobile:" + isMobile);
         if (currentPage.length) {
             if (temp == "#home"){
+                $('.img-wrapper').hide();
+                $('.item').parent().removeClass("chosen");
                 $("#view").hide("fade",  300, function(){
                     $("#home, #thumbs").show("slide", {direction: "left"}, 300);
                 });
@@ -288,8 +295,6 @@ $(".prev").click(function(){
 
 
 $(".close").click(function(){
-    $('.img-wrapper').hide();
-    $('.item').parent().removeClass("chosen");
     window.location.hash = "#home";
 });
 
@@ -317,6 +322,10 @@ $(document).on('ready', function(){
             changeAperture(imageSets[currentImage], ui.value);
         }
     });
+});
+
+$(".tip").on('click', function(){
+    $(this).hide("fade", 300);
 });
 
 $("#view").on('mousewheel', function(event) {

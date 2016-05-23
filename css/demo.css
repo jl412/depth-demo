@@ -45,6 +45,47 @@ body > .hori-layout{
 	overflow: hidden;
 }
 
+.tip{
+	z-index: 99;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0, 0.8);
+	font-size: 26px;
+}
+
+#focus-tip{
+	width: 50%;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+}
+
+#focus-tip img{
+	width: 60px;
+	height: auto;
+	transform: translate(40px, 10px);
+}
+
+#aperture-tip{
+	width: 50%;
+	position: absolute;
+	bottom: 55px;
+	left: 20%;
+}
+
+#aperture-tip span{
+	position: absolute;
+	right: 80px;
+	bottom: -20px;
+	width: 40px;
+	margin: auto;
+	font-size: 36px;
+	transform: rotate(121deg) translate(20px, -10px);
+}
+
 .img-wrapper > img{
 	position: absolute;
 	top: 0;
@@ -76,7 +117,7 @@ body > .hori-layout{
 }
 
 .slogan p{
-	font-size: 24px;
+	font-size: 34px;
 }
 
 .nav{
@@ -391,6 +432,19 @@ body > .hori-layout{
 }
 
 @media only screen and (max-width: 736px){
+
+	.slogan p{
+		font-size: 18px;
+	}
+
+	.tip{
+		font-size: 14px;
+	}
+
+	#aperture-tip span{
+		font-size: 20px;
+	}
+
 	.image-info > div{
 		width: 30%;
 		max-width: 150px;
