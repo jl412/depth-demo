@@ -3,6 +3,7 @@ var currentImage = 0;
 var currentAper = 3;
 var imageSets = [];
 var isMobile = false;
+var loading = false;
 
 function setGrid(){
    var showGrid = $('#view');
@@ -49,33 +50,43 @@ function setGrid(){
         showGrid.prepend(content);
     }
 
+    setRefocusEvent();
+    setFocusAnimation();
 
     // clicking events
-    $('.grid-container').on('click', function(event) {
-        
-        focusAnimation($(this), event);
-        // $(this).find(".focus").delay(1000).hide();
-        // $(this).find(".focus").delay(400).show();
-        // $(this).find(".focus").delay(1000).hide();
-        // console.log("X:" + posX + ", Y:" + posY);
-    });
+    
 
-    $("#view").on("click",".grid-container .grid", function(){
-        changeFocus(imageSets[currentImage], $(this));
-    });
+
 
     });
 }
 
-function focusAnimation(canvas, event){
-    var posX = event.pageX - canvas.offset().left - 30,
-    posY = event.pageY - canvas.offset().top - 30;
-    canvas.find(".focus").stop(true, true);
-    canvas.find(".focus").hide();
-    canvas.find(".focus").css({left: posX + "px", top: posY + "px"});
-    canvas.find(".focus").show("explode",{pieces: 4} ,150, function(){
+function setRefocusEvent(){
+    $(".grid-container .grid").on("click", function(){
+        console.log("loading:" + loading);
+        if (!loading) {
+            changeFocus(imageSets[currentImage], $(this));
+        }
     });
-    canvas.find(".focus").delay(200).effect("pulsate",{times: 1}, 500, function(){
+}
+
+function setFocusAnimation(){
+    $('.grid-container').on('click', function(event) {
+        console.log("loading-animation:" + loading);
+
+        if (!loading) {
+            $(this).find(".focus").stop(true, true);
+            var posX = event.pageX - $(this).offset().left - 30,
+            posY = event.pageY - $(this).offset().top - 30;
+            $(this).find(".focus").css({left: posX + "px", top: posY + "px"});
+            $(this).find(".focus").show("explode", {pieces: 4} ,150, function(){
+                loading = true;
+                console.log("show focus");
+            });
+            $(this).find(".focus").delay(200).effect("pulsate",{times: 1}, 500);
+        }
+        
+
     });
 }
 
@@ -104,10 +115,11 @@ function createCol(col, xP, xPLast){
 }
 
 function moveImage(imgValue){
+    loading = true;
     console.log("currentImg: " + currentImage + " , movetoImg: " + imgValue);
     if (imgValue < currentImage) {
-        $('.img-wrapper:eq('+ currentImage +')').hide("slide", {direction: "right"}, 500);
-        $('.img-wrapper:eq('+ imgValue +')').show("slide", {direction: "left"}, 500, function(){
+        $('.img-wrapper:eq('+ currentImage +')').hide("slide", {direction: "right"}, 300);
+        $('.img-wrapper:eq('+ imgValue +')').show("slide", {direction: "left"}, 300, function(){
             currentImage = imgValue;
             sizeGrid();
             changeAperture(imageSets[currentImage], $( ".aperture" ).slider("value"));
@@ -115,8 +127,8 @@ function moveImage(imgValue){
         $('.item:eq('+ currentImage +')').parent().removeClass("chosen");
         $('.item:eq('+ imgValue +')').parent().addClass("chosen");
     }else if (imgValue > currentImage) {
-        $('.img-wrapper:eq('+ currentImage +')').hide("slide", {direction: "left"}, 500);
-        $('.img-wrapper:eq('+ imgValue +')').show("slide", {direction: "right"}, 500, function(){
+        $('.img-wrapper:eq('+ currentImage +')').hide("slide", {direction: "left"}, 300);
+        $('.img-wrapper:eq('+ imgValue +')').show("slide", {direction: "right"}, 300, function(){
             currentImage = imgValue;
             sizeGrid();
             changeAperture(imageSets[currentImage], $( ".aperture" ).slider("value"));
@@ -167,8 +179,9 @@ function replaceImg(focusAnimation){
             $(this).detach();
             inserted.removeClass("onload").addClass("current");
             if (focusAnimation == true) {
-                $(".img-wrapper:eq("+ currentImage +")").find(".focus").delay(300).hide("fade", 50, function(){
-                    // $(".img-wrapper:eq("+ currentImage +") .grid-container").removeClass("wait");
+                $(".img-wrapper:eq("+ currentImage +")").find(".focus").delay(300).hide("fade", 10, function(){
+                    loading = false;
+                    console.log("hide focus");
                 });
             }   
         })
@@ -180,6 +193,7 @@ function sizeGrid(){
     console.log($("#view .img-wrapper:eq("+ currentImage +")").find("img").width());
 
     $( ".aperture" ).slider( "option", "step", (100 / imageSets[currentImage].aperture.scale));
+    loading = false;
 }
 
 
